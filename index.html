@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAKAHIMA - Gerakan Pramuka MTs Hidayatul Mubtadiin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0a0a0a;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a0000 0%, #8B0000 50%, #000 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+            border-bottom: 3px solid #DC143C;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            color: #DC143C;
+            letter-spacing: 2px;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: #FFD700;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #DC143C;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DC143C;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(139,0,0,0.7) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23DC143C" opacity="0.3"/></pattern></defs><rect fill="%23000" width="1200" height="600"/><rect fill="url(%23p)" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🦁';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            left: -5%;
+            top: 50%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .hero::after {
+            content: '🌺';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.05;
+            right: -3%;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(220, 20, 60, 0.3);
+            color: #FFD700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            border: 2px solid #DC143C;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #DC143C;
+            letter-spacing: 3px;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: normal;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            color: #ddd;
+        }
+
+        .hero-location {
+            color: #FFD700;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #DC143C, #8B0000);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+            border: 2px solid #DC143C;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(220, 20, 60, 0.6);
+            background: linear-gradient(135deg, #FF1744, #DC143C);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #DC143C;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s;
+            border: 2px solid #8B0000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #DC143C, #FFD700);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.4);
+            border-color: #DC143C;
+        }
+
+        .card h3 {
+            color: #DC143C;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+            position: relative;
+        }
+
+        .regu-section {
+            background: #0a0a0a;
+            padding: 5rem 0;
+        }
+
+        .regu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .regu-card {
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid #8B0000;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .regu-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220,20,60,0.1) 0%, transparent 70%);
+            transition: all 0.6s;
+        }
+
+        .regu-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .regu-card:hover {
+            transform: scale(1.05);
+            border-color: #DC143C;
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.5);
+        }
+
+        .regu-icon {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.6));
+        }
+
+        .regu-card h3 {
+            color: #DC143C;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .regu-card p {
+            color: #bbb;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 2px solid #8B0000;
+            transition: all 0.3s;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            border-color: #DC143C;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.5));
+        }
+
+        .value-item h4 {
+            color: #DC143C;
+            font-size: 1.2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 2px solid #8B0000;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 3px solid #DC143C;
+        }
+
+        .contact-info {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            border: 2px solid #8B0000;
+        }
+
+        .contact-info p {
+            margin: 1.5rem 0;
+            color: #ddd;
+            font-size: 1.1rem;
+        }
+
+        .contact-info strong {
+            color: #DC143C;
+        }
+
+        .jatim-badge {
+            display: inline-block;
+            background: rgba(220, 20, 60, 0.2);
+            color: #FFD700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            border: 2px solid #DC143C;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+
+            .regu-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-main {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-text">
+                    <span class="logo-main">GRAKAHIMA</span>
+                    <span class="logo-sub">Gerakan Pramuka MTs Hidayatul Mubtadiin</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#regu">Regu</a></li>
+                <li><a href="#kegiatan">Kegiatan</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-badge">🏕️ Kwartir Cabang Jember - Jawa Timur</div>
+        <h1>GRAKAHIMA</h1>
+        <h2>Gerakan Pramuka MTs Hidayatul Mubtadiin</h2>
+        <p>Membentuk Generasi Berkarakter, Tangguh, dan Berakhlak Mulia</p>
+        <p class="hero-location">📍 Jember, Jawa Timur</p>
+        <a href="#kegiatan" class="btn">Jelajahi Kegiatan Kami</a>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Tentang GRAKAHIMA</h2>
+            <p class="section-subtitle">Gugus Depan Pramuka MTs Hidayatul Mubtadiin</p>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+                GRAKAHIMA (Gerakan Pramuka MTs Hidayatul Mubtadiin) adalah wadah pembinaan karakter dan kepemimpinan 
+                yang berlandaskan nilai-nilai Islam dan Pancasila. Kami bernaung di bawah Kwartir Cabang Jember, 
+                Kwartir Daerah Jawa Timur, dan berkomitmen untuk membentuk generasi penerus yang tangguh, 
+                berakhlak mulia, dan siap mengabdi kepada bangsa dan negara.
+            </p>
+
+            <div class="values">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h4>Disiplin & Tanggung Jawab</h4>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h4>Gotong Royong</h4>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💪</div>
+                    <h4>Tangguh & Mandiri</h4>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🕌</div>
+                    <h4>Berakhlak Mulia</h4>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🌟</div>
+                    <h4>Kreatif & Inovatif</h4>
+                </div>
+            </div>
+
+            <div class="jatim-badge">Kwartir Daerah Jawa Timur - Kwarcab Jember</div>
+        </div>
+    </section>
+
+    <section id="regu" class="regu-section">
+        <div class="container">
+            <h2 class="section-title">Regu Kami</h2>
+            <p class="section-subtitle">Dua Kekuatan yang Bersatu dalam GRAKAHIMA</p>
+        </div>
+        <div class="regu-container">
+            <div class="regu-card">
+                <span class="regu-icon">🦁</span>
+                <h3>Regu Singa</h3>
+                <p>Melambangkan keberanian, kekuatan, dan kepemimpinan. Regu Singa adalah simbol keberanian dalam menghadapi tantangan dan siap memimpin dengan penuh tanggung jawab. Seperti singa yang gagah berani, anggota regu ini memiliki jiwa pantang menyerah dan selalu melindungi kelompoknya.</p>
+            </div>
+            <div class="regu-card">
+                <span class="regu-icon">🌺</span>
+                <h3>Regu Anggrek</h3>
+                <p>Melambangkan keindahan, keanggunan, dan kearifan. Regu Anggrek adalah simbol kelembutan yang kuat, seperti bunga anggrek yang indah namun tahan dalam berbagai kondisi. Anggota regu ini memiliki kepribadian yang bijaksana, penuh empati, dan tetap kokoh dalam menjaga nilai-nilai luhur.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kegiatan">
+        <div class="container">
+            <h2 class="section-title">Kegiatan GRAKAHIMA</h2>
+            <p class="section-subtitle">Program Unggulan Pembinaan Karakter dan Keterampilan</p>
+            <div class="cards">
+                <div class="card">
+                    <h3>🏕️ Perkemahan Sabtu-Minggu</h3>
+                    <p>Kegiatan Persami untuk melatih kemandirian, survival skills, dan kebersamaan di alam terbuka. Anggota belajar mendirikan tenda, memasak, dan berbagai keterampilan kepramukaan.</p>
+                </div>
+                <div class="card">
+                    <h3>🎖️ Pelantikan & Upacara</h3>
+                    <p>Upacara pelantikan anggota baru dan perayaan Hari Pramuka untuk menumbuhkan rasa bangga dan tanggung jawab sebagai anggota Pramuka.</p>
+                </div>
+                <div class="card">
+                    <h3>📚 Pelatihan SKU & SKK</h3>
+                    <p>Pembinaan rutin untuk mencapai Syarat Kecakapan Umum (SKU) dan Syarat Kecakapan Khusus (SKK) sesuai tingkatan Penggalang.</p>
+                </div>
+                <div class="card">
+                    <h3>🧗 Outbound & Leadership</h3>
+                    <p>Permainan dan tantangan outdoor untuk mengasah mental, fisik, dan jiwa kepemimpinan melalui berbagai simulasi dan games edukatif.</p>
+                </div>
+                <div class="card">
+                    <h3>🎪 Lomba Kepramukaan</h3>
+                    <p>Partisipasi aktif dalam berbagai lomba tingkat Kwarcab Jember dan Kwarda Jawa Timur untuk mengasah kemampuan dan sportivitas.</p>
+                </div>
+                <div class="card">
+                    <h3>🌱 Bakti Sosial & Lingkungan</h3>
+                    <p>Kegiatan peduli masyarakat dan lingkungan seperti bersih-bersih masjid, gotong royong, dan penghijauan di wilayah Jember.</p>
+                </div>
+                <div class="card">
+                    <h3>🕌 Kegiatan Keagamaan</h3>
+                    <p>Pembinaan akhlak dan keagamaan melalui kegiatan sholat berjamaah, tadarus, dan peringatan hari besar Islam.</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 Kreativitas & Keterampilan</h3>
+                    <p>Pengembangan bakat melalui kegiatan seni, prakarya pionering, morse, semaphore, dan keterampilan kepramukaan lainnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);">
+        <div class="container">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <p class="section-subtitle">Dokumentasi Kegiatan GRAKAHIMA</p>
+            <div class="gallery">
+                <div class="gallery-item">Persami Regu Singa</div>
+                <div class="gallery-item">Upacara Hari Pramuka</div>
+                <div class="gallery-item">Pelatihan PBB</div>
+                <div class="gallery-item">Bakti Sosial Jember</div>
+                <div class="gallery-item">Lomba Tali-Temali</div>
+                <div class="gallery-item">Persami Regu Anggrek</div>
+                <div class="gallery-item">Jambore Kwarcab</div>
+                <div class="gallery-item">Kegiatan Keagamaan</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p class="section-subtitle">Bergabunglah Bersama GRAKAHIMA</p>
+            <div class="contact-info">
+                <p><strong>🏫 Nama Lengkap:</strong><br>
+                Gerakan Pramuka MTs Hidayatul Mubtadiin<br>
+                (GRAKAHIMA)</p>
+                
+                <p><strong>📍 Alamat:</strong><br>
+                MTs Hidayatul Mubtadiin<br>
+                Kabupaten Jember, Jawa Timur</p>
+                
+                <p><strong>📧 Email:</strong><br>grakahima@mtshm.sch.id</p>
+                
+                <p><strong>📱 WhatsApp:</strong><br>+62 812-3456-7890</p>
+                
+                <p><strong>⏰ Jadwal Latihan:</strong><br>
+                Setiap Sabtu, pukul 14.00 - 17.00 WIB</p>
+                
+                <p><strong>🏕️ Kwartir:</strong><br>
+                Kwartir Cabang Jember<br>
+                Kwartir Daerah Jawa Timur</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #DC143C; font-weight: bold;">GRAKAHIMA</p>
+        <p>Gerakan Pramuka MTs Hidayatul Mubtadiin</p>
+        <p style="margin-top: 1rem;">&copy; 2024 GRAKAHIMA - Kwarcab Jember, Kwarda Jawa Timur</p>
+        <p style="margin-top: 1rem; font-size: 1.1rem; color: #FFD700;">
+            <strong>Satyaku Kudarmakan, Darmaku Kubaktikan</strong>
+        </p>
+        <p style="margin-top: 0.5rem; color: #aaa;">🦁 Regu Singa | 🌺 Regu Anggrek</p>
+    </footer>
+</body>
+</html>
